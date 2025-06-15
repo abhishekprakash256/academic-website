@@ -7,7 +7,7 @@ Type=simple
 User=ubuntu
 Group=ubuntu
 WorkingDirectory=/home/ubuntu/academic-website
-ExecStart=/home/ubuntu/.venvs/global/bin/gunicorn -w 4 -b 0.0.0.0:5100 app:app
+ExecStart=/home/ubuntu/.venvs/global/bin/gunicorn -w 4 -b 0.0.0.0:5100 app:app_wsgi
 Restart=always
 RestartSec=5
 Environment=PYTHONUNBUFFERED=1
