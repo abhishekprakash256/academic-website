@@ -4,7 +4,7 @@ The flask application to rnder the website.
 
 
 
-from flask import Flask, send_from_directory
+from flask import Flask, send_from_directory, jsonify
 
 app = Flask(__name__)
 
@@ -16,15 +16,21 @@ app = Flask(__name__)
 
 STATIC_DIR = '/home/ubuntu/academic-website'
 
+# Serve index.html
 @app.route('/academic-website/')
 def serve_index():
-    #print("Serving index.html")
     return send_from_directory(STATIC_DIR, 'index.html')
 
-# Serve any other static file from the same folder
+# Serve static assets (CSS, JS, etc.)
 @app.route('/academic-website/<path:filename>')
 def serve_static(filename):
     return send_from_directory(STATIC_DIR, filename)
+
+# API endpoint
+@app.route('/academic-website/api/v1/page', methods=['GET'])
+def get_page_data():
+    return jsonify({"message": "Hello from /academic-website/api/v1/page"})
+
 
 
 # Gunicorn will use this
