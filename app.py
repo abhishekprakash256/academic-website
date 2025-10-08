@@ -16,13 +16,13 @@ app = Flask(__name__)
 
 STATIC_DIR = '/home/ubuntu/academic-website'
 
-@app.route('/')
+@app.route('/academic-website/')
 def serve_index():
     #print("Serving index.html")
     return send_from_directory(STATIC_DIR, 'index.html')
 
 # Serve any other static file from the same folder
-@app.route('/<path:filename>')
+@app.route('/academic-website/<path:filename>')
 def serve_static(filename):
     return send_from_directory(STATIC_DIR, filename)
 
