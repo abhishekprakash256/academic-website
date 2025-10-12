@@ -27,7 +27,8 @@ def serve_static(filename):
     return send_from_directory(STATIC_DIR, filename)
 
 # API endpoint
-@app.route('/academic-website/api/v1/page', methods=['GET'])
+#https://api.meabhi.me/{microservice}/v{version}/{resource}/{optional-action}
+@app.route('/academic-website/v1/page', methods=['GET'])
 def get_page_data():
     return jsonify({"message": "Hello from /academic-website/api/v1/page"})
 
